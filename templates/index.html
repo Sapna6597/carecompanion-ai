@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>CareCompanion — AI Health Companion</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}" />
+</head>
+<body>
+  <header class="site-header">
+    <div class="brand">
+      <span class="logo" aria-hidden="true">✚</span>
+      <div>
+        <h1>CareCompanion</h1>
+        <p class="tagline">AI-assisted, patient-first health guidance</p>
+      </div>
+    </div>
+    <nav class="nav">
+      <a href="#symptom">Symptom Checker</a>
+      <a href="#assistant">Health Assistant</a>
+      <a href="#tips">Wellness</a>
+    </nav>
+  </header>
+
+  <section class="hero">
+    <div class="hero-text">
+      <h2>Understand your health, one question at a time</h2>
+      <p>
+        A patient-oriented demo blending medicine and AI. Explore an educational
+        symptom checker, chat with a health assistant, and get daily wellness tips —
+        all running privately on your device.
+      </p>
+      <div class="hero-actions">
+        <a class="btn primary" href="#symptom">Try the Symptom Checker</a>
+        <a class="btn ghost" href="#assistant">Ask the Assistant</a>
+      </div>
+    </div>
+    <aside class="tip-card" aria-label="Health tip of the day">
+      <h3>💡 Tip of the day</h3>
+      <p id="tip-of-day">{{ tip.tip }}</p>
+      <small>{{ tip.date }}</small>
+    </aside>
+  </section>
+
+  <main class="container">
+    <!-- Symptom Checker -->
+    <section id="symptom" class="panel">
+      <h2>Educational Symptom Checker</h2>
+      <p class="muted">
+        Select the symptoms you're experiencing. This provides general information only —
+        not a diagnosis.
+      </p>
+
+      <div class="symptom-grid" id="symptom-grid"></div>
+
+      <div class="custom-symptom">
+        <input type="text" id="custom-symptom" placeholder="Add another symptom (e.g. dizziness)" />
+        <button class="btn ghost" id="add-symptom">Add</button>
+      </div>
+
+      <button class="btn primary" id="check-btn">Analyze symptoms</button>
+
+      <div id="symptom-result" class="result" hidden></div>
+    </section>
+
+    <!-- Health Assistant -->
+    <section id="assistant" class="panel">
+      <h2>Health Assistant <span id="assistant-mode" class="mode-badge">…</span></h2>
+      <p class="muted">Ask a general health question. The assistant shares wellness information, not medical advice.</p>
+
+      <div id="chat-window" class="chat-window" aria-live="polite">
+        <div class="msg bot">Hi! I'm your health assistant. Ask me about sleep, hydration, fever care, and more.</div>
+      </div>
+
+      <form id="chat-form" class="chat-form">
+        <input type="text" id="chat-input" placeholder="Type your question…" autocomplete="off" required />
+        <button class="btn primary" type="submit">Send</button>
+      </form>
+    </section>
+
+    <!-- Wellness Tips -->
+    <section id="tips" class="panel">
+      <h2>Wellness Library</h2>
+      <p class="muted">Simple, evidence-informed habits for everyday health.</p>
+      <ul id="tips-list" class="tips-list"></ul>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <p class="disclaimer">
+      ⚠️ <strong>Educational demo only.</strong> CareCompanion does not provide medical diagnosis
+      or treatment. Always consult a licensed clinician. In an emergency, call your local emergency number.
+    </p>
+  </footer>
+
+  <script src="{{ url_for('static', filename='js/main.js') }}"></script>
+</body>
+</html>
